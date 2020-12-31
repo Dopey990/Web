@@ -20,6 +20,8 @@ class ArticleController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository): Response
     {
+		$this->denyAccessUnlessGranted('ROLE_USER', null, 'Veuillez vous identifier pour continuer.');
+		
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
         ]);
