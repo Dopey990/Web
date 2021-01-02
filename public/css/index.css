@@ -1,0 +1,22 @@
+body {
+	font-family: Courier;
+	font-size: 30px;
+}
+
+h1 {
+	font-weight: bold;
+	border: 0px;
+	margin: 0px;
+}
+
+img {
+	margin-right: 10px;
+}
+
+.element {
+	border-collapse: collapse;
+	margin-left: 50px;
+	display: block;
+	border-spacing:0px;
+	border: 0px;
+}

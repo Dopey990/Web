@@ -4,20 +4,25 @@
 
 {% block stylesheets %}
 	<link href="{{ asset('css/index.css') }}" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 {% endblock %}
 
 {% block body %}
 <table>
 {% for article in articles %}
 	<tr>
-		<table>
+		{% if article.id%2 == 0 %}
+			<table class=element bgcolor=#E8E8E8>
+		{% else %}
+			<table class=element bgcolor="white">
+		{% endif %}
 			<tr>
 				<td rowspan=3, colspan=3>
 					<a href="{{ path('article_show', {'id': article.id}) }}">
-						<img src="{{ asset('uploads/articles/' ~ article.imageFilename) }}" alt="" border=3 height=100 width=100></img>
+						<img width=500px height=300px src="{{ asset('uploads/articles/' ~ article.imageFilename) }}" alt="" border=3 height=100 width=100></img>
 					</a>
 				</td>
-				<td><h2>{{ article.Nom }}</h2></td>
+				<td><h1>{{ article.Nom }}</h1></td>
 			</tr>
 			<tr>
 				<td><p>{{ article.DateCreation ? article.DateCreation|date('Y-m-d') : '' }}</p></td>
@@ -35,6 +40,7 @@
 </table>
 
 {% if app.user %}
+	<hr width="80%" color="cyan"> 
 	<a href="{{ path('article_index') }}">Administration</a>
 {% endif %}
 {% endblock %}
