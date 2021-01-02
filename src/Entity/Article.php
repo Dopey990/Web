@@ -31,6 +31,11 @@ class Article
      * @ORM\Column(type="date")
      */
     private $Date_Creation;
+	
+	/**
+     * @ORM\Column(type="string")
+     */
+    private $imageFilename;
 
     public function getId(): ?int
     {
@@ -69,6 +74,18 @@ class Article
     public function setDateCreation(\DateTimeInterface $Date_Creation): self
     {
         $this->Date_Creation = $Date_Creation;
+
+        return $this;
+    }
+	
+	public function getImageFilename()
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename($imageFilename)
+    {
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }

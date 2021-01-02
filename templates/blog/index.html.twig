@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Le superbe blog{% endblock %}
 
 {% block stylesheets %}
 	<link href="{{ asset('css/index.css') }}" type="text/css" rel="stylesheet" />
@@ -10,10 +10,22 @@
 <table>
 {% for article in articles %}
 	<tr>
-		<td>{{ article.id }}</td>
-		<td>{{ article.Nom }}</td>
-		<td>{{ article.Description }}</td>
-		<td>{{ article.DateCreation ? article.DateCreation|date('Y-m-d') : '' }}</td>
+		<table>
+			<tr>
+				<td rowspan=3, colspan=3>
+					<a href="{{ path('article_show', {'id': article.id}) }}">
+						<img src="{{ asset('uploads/articles/' ~ article.imageFilename) }}" alt="" border=3 height=100 width=100></img>
+					</a>
+				</td>
+				<td><h2>{{ article.Nom }}</h2></td>
+			</tr>
+			<tr>
+				<td><p>{{ article.DateCreation ? article.DateCreation|date('Y-m-d') : '' }}</p></td>
+			</tr>
+			<tr>
+				<td>{{ article.Description }}</td>
+			</tr>
+		</table>
 	</tr>
 {% else %}
 	<tr>

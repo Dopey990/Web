@@ -1,3 +1,5 @@
-https://auth0.com/blog/creating-your-first-symfony-app-and-adding-authentication/
+https://auth0.com/blog/creating-your-first-symfony-app-and-adding-authentication/ <- Authentifcation + base CSS
 
 https://symfony.com/doc/current/index.html
+
+https://symfony.com/doc/current/controller/upload_file.html <- Ajout d'une image pour chaque article

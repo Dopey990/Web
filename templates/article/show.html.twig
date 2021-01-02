@@ -26,9 +26,12 @@
         </tbody>
     </table>
 
-    <a href="{{ path('article_index') }}">back to list</a>
+{% if app.user %}
+    <a href="{{ path('article_index') }}">Retour à l'administration</a>
+	<a href="{{ path('article_edit', {'id': article.id}) }}">Éditon</a>
+{% endif %}
 
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+	<a href="{{ path('blog') }}">Accueil</a>
 
     {{ include('article/_delete_form.html.twig') }}
 {% endblock %}
