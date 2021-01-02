@@ -1,0 +1,3 @@
+Ajouter un utilisateur avec nom "admin" et mot de passe "123" :
+
+php bin/console doctrine:query:sql "INSERT INTO admin VALUES (0, 'admin', '[\"ROLE_ADMIN\"]', '$argon2id$v=19$m=65536,t=4,p=1$VEhtSmFZL3lJdXBvMFZNbA$kcKAb2kM2DfElZDkO60V0/iPUvkiMgGU0k+wJrmnFh0')"

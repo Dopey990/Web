@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\User;
+use App\Entity\Admin;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,7 +72,11 @@ class BlogAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Username could not be found.');
+			$user = $user = $this->entityManager->getRepository(Admin::class)->findOneBy(['username' => $credentials['username']]);
+			
+			if (!$user) {
+				throw new CustomUserMessageAuthenticationException('Username could not be found.');
+			}
         }
 
         return $user;

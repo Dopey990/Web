@@ -32,6 +32,8 @@ class ArticleController extends AbstractController
      */
     public function new(Request $request): Response
     {
+		$this->denyAccessUnlessGranted('ROLE_USER', null, 'Veuillez vous identifier pour continuer.');
+		
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -65,6 +67,8 @@ class ArticleController extends AbstractController
      */
     public function edit(Request $request, Article $article): Response
     {
+		$this->denyAccessUnlessGranted('ROLE_USER', null, 'Veuillez vous identifier pour continuer.');
+		
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
@@ -85,6 +89,8 @@ class ArticleController extends AbstractController
      */
     public function delete(Request $request, Article $article): Response
     {
+		$this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Veuillez vous identifier avec un compte admin pour continuer.');
+		
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
