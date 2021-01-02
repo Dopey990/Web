@@ -8,5 +8,21 @@
 
 {% block body %}
 <table>
+{% for article in articles %}
+	<tr>
+		<td>{{ article.id }}</td>
+		<td>{{ article.Nom }}</td>
+		<td>{{ article.Description }}</td>
+		<td>{{ article.DateCreation ? article.DateCreation|date('Y-m-d') : '' }}</td>
+	</tr>
+{% else %}
+	<tr>
+		<td colspan="5">Aucun article n'a été créé</td>
+	</tr>
+{% endfor %}
 </table>
+
+{% if app.user %}
+	<a href="{{ path('article_index') }}">Administration</a>
+{% endif %}
 {% endblock %}

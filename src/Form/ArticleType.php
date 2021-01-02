@@ -14,7 +14,6 @@ class ArticleType extends AbstractType
         $builder
             ->add('Nom')
             ->add('Description')
-            ->add('Date_Creation')
         ;
     }
 
